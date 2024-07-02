@@ -22,15 +22,14 @@ export async function generateImage(prompt, size = "1792x1024") {
 }
 
 //model names:- gpt-4, gpt-4-32k, gpt-4-vision-preview, gpt-4-1106-preview
-export async function GPT() {
+export async function GPT(inputPrompt) {
   // response_format: { type: "json_object" },
   const completion = await openai.chat.completions.create({
     messages: [
       { role: "system", content: "You are a helpful assistant." },
       {
         role: "user",
-        content: `could you write this title in 6 words
-        Nature's Bounty Breakfast: Energise Your Day the Organic Way`,
+        content: inputPrompt,
       },
     ],
     model: "gpt-4-1106-preview",
